@@ -13,9 +13,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors());
 
-app.use(`${process.env.baseURL}/auth`, indexRouter.authRouter);
-app.use(`${process.env.baseURL}/user`, indexRouter.userRouter);
-app.use(`${process.env.baseURL}/product`, indexRouter.productRouter);
+app.use(`${process.env.BASEURL}/auth`, indexRouter.authRouter);
+app.use(`${process.env.BASEURL}/user`, indexRouter.userRouter);
+app.use(`${process.env.BASEURL}/product`, indexRouter.productRouter);
 
 app.use('*', (req, res) => {
     return res.status(404).json({ message: 'Not Found' });
