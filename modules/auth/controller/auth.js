@@ -13,8 +13,7 @@ export const SignUp = async (req, res) => {
             return res.status(409).json({ message: "Email Exist" });
         } else {
             const hashPassword = bcrypt.hashSync(password, parseInt(process.env.SaltRound));
-            const encryptPhone = jwt.sign({ phone: phone }, process.env.emailToken);
-            const newUser = new userModel({ firstName, lastName, email, password: hashPassword, age, phone: encryptPhone, gender, address });
+            const newUser = new userModel({ firstName, lastName, email, password: hashPassword, age, gender, address });
             const savedUser = await newUser.save();
             return res.status(200).json({ message: "Done" });
         }
@@ -32,7 +31,7 @@ export const SignIn = async (req, res) => {
                 const match = bcrypt.compareSync(password, checkEmail.password);
                 if (match) {
                     const user = await userModel.findByIdAndUpdate(checkEmail._id, { isOnline: true }, { new: true });
-                    const token = jwt.sign({ id: user._id }, process.env.emailToken, { expiresIn: '24h' });
+                    const token = jwt.sign({ id: user._id }, process.env.EMAILTOKEN, { expiresIn: '24h' });
                     return res.status(200).json({ message: "Done", token });
                 } else {
                     return res.status(403).json({ message: "email Password misMatch" });
