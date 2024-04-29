@@ -13,6 +13,10 @@ export const appRouter = (app) => {
     app.use(`${process.env.BASEURL}/user`, userRouter);
     app.use(`${process.env.BASEURL}/product`, productRouter);
 
+    app.use('*', (req, res) => {
+        res.status(404).json({ message: "Invalid URL" });
+    })
+
     connectDB();
     InitServer();
 
