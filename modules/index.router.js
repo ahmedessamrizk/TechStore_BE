@@ -16,6 +16,7 @@ export const appRouter = (app) => {
     app.use(`${process.env.baseURL}/auth`, authRouter);
     app.use(`${process.env.baseURL}/user`, userRouter);
     app.use(`${process.env.baseURL}/product`, productRouter);
+
     app.use('*', (req, res) => {
         return res.status(404).json({ message: 'Not Found' });
     }

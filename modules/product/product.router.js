@@ -3,7 +3,6 @@ import * as productController from './controller/product.js'
 import { auth } from './../../middleware/auth.js';
 import { validation } from './../../middleware/validation.js';
 import * as productValidators from './product.validation.js'
-import { checkProfile } from './../../services/profile.js';
 
 const router = Router();
 
