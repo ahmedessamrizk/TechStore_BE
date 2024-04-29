@@ -5,6 +5,8 @@ import { connectDB } from "../DB/connection.js";
 import { InitServer } from "../admin/admin.js";
 import express from 'express'
 import cors from 'cors'
+import dotenv from 'dotenv'
+dotenv.config({ path: './config/.env' })
 
 export const appRouter = (app) => {
     app.use(cors());
