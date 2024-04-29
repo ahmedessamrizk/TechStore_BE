@@ -6,7 +6,7 @@ import * as indexRouter from './modules/index.router.js'
 
 
 const app = express();
-const port = process.env.port;
+let port;
 
 indexRouter.appRouter(app)
 app.listen(port, () => {
