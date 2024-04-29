@@ -9,10 +9,10 @@ import dotenv from 'dotenv'
 dotenv.config({ path: './config/.env' })
 
 export const appRouter = (app) => {
-    app.use(cors());
     app.use(express.json());
-    connectDB();
-    InitServer();
+    app.use(express.urlencoded({ extended: true }))
+    app.use(cors());
+
     app.use(`${process.env.baseURL}/auth`, authRouter);
     app.use(`${process.env.baseURL}/user`, userRouter);
     app.use(`${process.env.baseURL}/product`, productRouter);
@@ -20,6 +20,9 @@ export const appRouter = (app) => {
         return res.status(404).json({ message: 'Not Found' });
     }
     );
+
+    connectDB();
+    InitServer();
 
 
 }
