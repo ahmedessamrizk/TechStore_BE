@@ -11,15 +11,15 @@ dotenv.config({ path: './config/.env' })
 export const appRouter = (app) => {
     app.use(cors());
     app.use(express.json());
+    connectDB();
+    InitServer();
     app.use(`${process.env.baseURL}/auth`, authRouter);
     app.use(`${process.env.baseURL}/user`, userRouter);
     app.use(`${process.env.baseURL}/product`, productRouter);
     app.use('*', (req, res) => {
-        res.status(404).json({ message: 'Not Found' });
+        return res.status(404).json({ message: 'Not Found' });
     }
     );
-    connectDB();
-    InitServer();
 
 
 }

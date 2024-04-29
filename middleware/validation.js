@@ -13,6 +13,6 @@ export const validation = (schema) => {
                 }
             }
         });
-        ErrList.length? res.json({message: "Validation error", err: ErrList}) : next()
+        return ErrList.length? res.json({message: "Validation error", err: ErrList}) : next()
     }
 }

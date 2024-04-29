@@ -8,19 +8,19 @@ export const auth = () => {
         try {
             const { authorization } = req.headers;
             if (!authorization?.startsWith(process.env.BEARERKEY)) {
-                res.status(400).json({message: "Invalid Bearer"});
+                return res.status(400).json({message: "Invalid Bearer"});
             } else {
                 const token = authorization.split('__')[1];
                 const decoded = jwt.verify(token, process.env.emailToken);
                 if (!decoded?.id) {
-                    res.status(400).json({message: "Invalid payload data"});
+                    return res.status(400).json({message: "Invalid payload data"});
                 } else {
                     const user = await userModel.findById(decoded.id).select('firstName lastName isDeleted isBlocked admin');
                     if (!user) {
-                        res.status(404).json({message: "Invalid ID"});
+                        return res.status(404).json({message: "Invalid ID"});
                     } else {
                         if (user.isDeleted || user.isBlocked) {
-                            res.status(401).json({message: "Account has been blocked or deleted"});
+                            return res.status(401).json({message: "Account has been blocked or deleted"});
                         } else {
                             req.user = user;
                             next();
