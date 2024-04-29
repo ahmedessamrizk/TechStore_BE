@@ -13,9 +13,9 @@ export const appRouter = (app) => {
     app.use(express.urlencoded({ extended: true }))
     app.use(cors());
 
-    app.use(`${process.env.baseURL}/auth`, authRouter);
-    app.use(`${process.env.baseURL}/user`, userRouter);
-    app.use(`${process.env.baseURL}/product`, productRouter);
+    app.use(`api/v1/auth`, authRouter);
+    app.use(`api/v1/user`, userRouter);
+    app.use(`api/v1/product`, productRouter);
 
     app.use('*', (req, res) => {
         return res.status(404).json({ message: 'Not Found' });
