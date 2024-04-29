@@ -9,12 +9,12 @@ import cors from 'cors'
 export const appRouter = (app) => {
     app.use(cors());
     app.use(express.json());
-    app.use(`${process.env.baseURL}/auth`, authRouter);
-    app.use(`${process.env.baseURL}/user`, userRouter);
-    app.use(`${process.env.baseURL}/product`, productRouter);
-    
+    app.use(`${process.env.BASEURL}/auth`, authRouter);
+    app.use(`${process.env.BASEURL}/user`, userRouter);
+    app.use(`${process.env.BASEURL}/product`, productRouter);
+
     connectDB();
     InitServer();
-    
-    
+
+
 }
