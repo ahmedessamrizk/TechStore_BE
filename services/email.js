@@ -1,6 +1,6 @@
 import nodeoutlook from 'nodejs-nodemailer-outlook'
 import dotenv from 'dotenv'
-dotenv.config()
+// dotenv.config()
 
 export function myEmail(email, subject, message) {
     nodeoutlook.sendEmail({

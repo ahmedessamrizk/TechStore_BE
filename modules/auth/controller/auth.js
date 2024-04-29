@@ -1,10 +1,8 @@
 import { userModel } from './../../../DB/models/user.model.js';
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { myEmail } from './../../../services/email.js';
-import { nanoid } from 'nanoid'
-import dotenv from 'dotenv'
-dotenv.config({ path: './config/.env' })
+// import dotenv from 'dotenv'
+// dotenv.config({ path: './config/.env' })
 
 
 export const SignUp = async (req, res) => {
@@ -39,7 +37,7 @@ export const SignIn = async (req, res) => {
                 } else {
                     return res.status(403).json({ message: "email Password misMatch" });
                 }
-               
+
             } else {
                 return res.status(403).json({ message: "Account has been deleted or blocked" });
             }

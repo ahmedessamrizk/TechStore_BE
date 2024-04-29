@@ -2,7 +2,7 @@ import { userModel } from "../DB/models/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
-dotenv.config({ path: './config/.env' })
+// dotenv.config({ path: './config/.env' })
 
 
 export const InitServer = async () => {
